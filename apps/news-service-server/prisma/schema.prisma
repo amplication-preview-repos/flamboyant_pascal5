@@ -1,0 +1,32 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Author {
+  createdAt DateTime @default(now())
+  email     String?
+  id        String   @id @default(cuid())
+  name      String?
+  updatedAt DateTime @updatedAt
+}
+
+model News {
+  content     String?
+  createdAt   DateTime  @default(now())
+  id          String    @id @default(cuid())
+  publishedAt DateTime?
+  title       String?
+  updatedAt   DateTime  @updatedAt
+}
+
+model Category {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  name      String?
+  updatedAt DateTime @updatedAt
+}
